@@ -34,7 +34,7 @@ def setup_logging():
 
 class Settings(BaseSettings):
     app_name: str = "iBookr"
-    app_version: str = "0.9.6"
+    app_version: str = "0.9.9"
     app_url: str = "https://ibookr.iz0.top"
     app_contact_email: str = "ibookr@iz0.top"
 

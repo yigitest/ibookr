@@ -1,10 +1,10 @@
 @echo off
 REM Build and export Docker image for ibookr_v2
 
-REM Read version from VERSION file
-setlocal enabledelayedexpansion
-set VERSION=
-for /f "delims=" %%v in (VERSION) do set VERSION=%%v
+REM Get version from settings.py from app_version: str = "0.9.9"
+for /f "tokens=3 delims== " %%a in ('findstr /r /c:"app_version: str = \"[0-9]*\.[0-9]*\.[0-9]*\"" .\ibookr\settings.py') do (
+    set VERSION=%%~a
+)
 
 REM Set image name
 set IMAGE=ibookr
