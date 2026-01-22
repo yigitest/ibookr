@@ -1,0 +1,11 @@
+services:
+  ibookr:
+    image: ibookr:latest
+    container_name: ibookr
+    user: "${APP_UID}:${APP_GID}"
+    volumes:
+      - ${DATA_VOLUME}:/data
+    environment:
+      - PYTHONUNBUFFERED=1
+      - openrouter_api_key=${OPENROUTER_API_KEY}
+    restart: unless-stopped
