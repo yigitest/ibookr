@@ -1,32 +1,23 @@
+
 # ibookr
 
-## docker deployment guide
+**ibookr** uses AI services to extract author and book titles from single or batch bookshelf photos. It enriches this data with ISBN, thumbnails, topics, time, and place info using Google Books and OpenLibrary APIs. All results are saved as Markdown files (see examples/).
 
-Create .env file with at least this variables:
-
-```
-APP_UID=1000
-APP_GID=1000
-DATA_VOLUME=/path/to/data/volume
-OPENROUTER_API_KEY=your-openrouter-key
-```
-
-Or you can be more specific:
-
-```
-log_file_path="/data/logs/ibookr.log"
-image_to_json_input_folder="/data/image_input"
-image_to_json_preprocessed_folder="/data/image_preprocessed"
-image_to_json_output_folder="/data/json_input"
-image_to_json_error_folder="/data/image_error"
-image_to_json_resize_width=1600
-image_to_json_archive_folder="/data/image_archive"
-json_input_folder="/data/json_input"
-json_output_folder="/data/json_output"
-json_book_output_folder="/data/json_book_output"
-json_error_folder="/data/json_error"
-openrouter_model_name="google/gemini-2.5-flash"
-openrouter_api_key=""
-```
+I use these files in Obsidian to create a personal book database ("bases").
 
 
+## Quick Start with Docker
+
+Before you begin, create an OpenRouter account and generate an API key.
+
+You can find example settings in the .env_example file. Adjust the .env and docker-compose.yml files to fit your needs.
+
+In short:
+- Copy .env_example to .env and update the values as needed.
+- Review docker-compose.yml and update folder paths and settings for your environment.
+- Add your OpenRouter API key to the .env file.
+- Then start the project using Docker.
+
+## License
+
+[MIT](https://choosealicense.com/licenses/mit/)

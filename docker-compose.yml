@@ -4,8 +4,21 @@ services:
     container_name: ibookr
     user: "${APP_UID}:${APP_GID}"
     volumes:
-      - ${DATA_VOLUME}:/data
+      - ${IBOOKR_DATA_PATH}:/data
+      - ${SYNCTHING_OUTPUT_PATH}:/json_book_output
+      - ${SYNCTHING_INPUT_PATH}/ibookr_json_input:/json_input
+      - ${SYNCTHING_INPUT_PATH}/ibookr_image_input:/image_input
     environment:
-      - PYTHONUNBUFFERED=1
-      - openrouter_api_key=${OPENROUTER_API_KEY}
-    restart: unless-stopped
+      log_file_path: "/data/ibookr.log"
+      image_to_json_input_folder: "/image_input"
+      image_to_json_preprocessed_folder: "/data/image_preprocessed"
+      image_to_json_output_folder: "/json_input"
+      image_to_json_error_folder: "/data/image_error"
+      image_to_json_resize_width: 1600
+      image_to_json_archive_folder: "/data/image_archive"
+      json_input_folder: "/json_input"
+      json_output_folder: "/data/json_output"
+      json_book_output_folder: "/json_book_output"
+      json_error_folder: "/data/json_error"
+      openrouter_model_name: "${OPENROUTER_MODEL_NAME}"
+      openrouter_api_key: "${OPENROUTER_API_KEY}"

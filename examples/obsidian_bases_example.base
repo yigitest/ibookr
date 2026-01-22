@@ -1,0 +1,48 @@
+filters:
+  and:
+    - file.tags.contains("Book")
+    - status == "AUTOGEN"
+formulas:
+  Cover Image: if(localCoverImageUrl,localCoverImageUrl, coverImageUrl)
+  image: image(if(localCoverImageUrl,localCoverImageUrl, coverImageUrl))
+properties:
+  formula.Cover Image:
+    displayName: localOrRemoteImageUrl
+  formula.image:
+    displayName: localOrRemoteImage
+views:
+  - type: table
+    name: Table View
+    order:
+      - file.name
+      - formula.image
+      - title
+      - author
+      - series
+      - seriesNo
+      - isbn
+      - firstPublishYear
+      - publisher
+      - categories
+      - tags
+      - pageCount
+      - times
+      - subjects
+      - places
+      - persons
+      - status
+      - created
+    sort:
+      - property: created
+        direction: DESC
+    columnSize:
+      note.created: 203
+      note.title: 226
+    rowHeight: tall
+  - type: cards
+    name: Card View
+    order:
+      - file.name
+    image: formula.Cover Image
+    imageAspectRatio: 1
+    cardSize: 160
